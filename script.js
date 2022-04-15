@@ -63,7 +63,15 @@ function formatNumberMoney(number) {
      updateDOM()
  }
 
+ //Sort user by money
+ function sortByMoney() {
+    data = data.sort((a, b) => b.money - a.money)
+    updateDOM()
+ }
+
  //Event Listeners
  addUserBtn.addEventListener('click', getRandomUser);
  doubleBtn.addEventListener('click', doubleMoney);
+ sortBtn.addEventListener('click', sortByMoney);
+ 
  
