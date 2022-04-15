@@ -46,3 +46,9 @@ function updateDOM(providedData = data) {
   });
 }
 
+//format number to money
+//https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-strings
+function formatNumberMoney(number) {
+    return  (number).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+ }
+ 
