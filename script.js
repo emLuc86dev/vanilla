@@ -76,8 +76,17 @@ function millionaires() {
   updateDOM();
 }
 
+//calcualte total 
+function calculateWealth() {
+    totalAmount = data.reduce((total, curr) => {
+      return total + curr.money
+    }, 0)
+    console.log(totalAmount)
+}
+
 //Event Listeners
 addUserBtn.addEventListener("click", getRandomUser);
 doubleBtn.addEventListener("click", doubleMoney);
 sortBtn.addEventListener("click", sortByMoney);
 showMillionairesBtn.addEventListener("click", millionaires);
+calculateWealthBtn.addEventListener("click", calculateWealth);
