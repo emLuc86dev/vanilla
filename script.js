@@ -40,7 +40,9 @@ function updateDOM(providedData = data) {
   providedData.forEach((item) => {
     const element = document.createElement("div");
     element.classList.add("person");
-    element.innerHTML = `<strong>${item.name}</strong> $${formatNumberMoney(item.money)}`;
+    element.innerHTML = `<strong>${item.name}</strong> $${formatNumberMoney(
+      item.money
+    )}`;
     main.appendChild(element);
   });
 }
@@ -76,12 +78,18 @@ function millionaires() {
   updateDOM();
 }
 
-//calcualte total 
+//calcualte total
 function calculateWealth() {
-    totalAmount = data.reduce((total, curr) => {
-      return total + curr.money
-    }, 0)
-    console.log(totalAmount)
+  totalAmount = data.reduce((total, curr) => {
+    return (total += curr.money);
+  }, 0);
+
+  const totalAmountEl = document.createElement("div");
+  totalAmountEl.innerHTML = `<h3>Total Amount: <strong>${formatNumberMoney(
+    totalAmount
+  )}</strong></h3>`;
+  main.appendChild(totalAmountEl)
+  console.log(totalAmount);
 }
 
 //Event Listeners
