@@ -1,7 +1,7 @@
 const main = document.getElementById("main");
 const addUserBtn = document.getElementById("add-user");
 const doubleBtn = document.getElementById("double");
-const showMillionairesBtn = document.getElementById("show-millioners");
+const showMillionairesBtn = document.getElementById("show-millionaires");
 const sortBtn = document.getElementById("sort");
 const calculateWealthBtn = document.getElementById("calculate-wealth");
 
@@ -48,30 +48,36 @@ function updateDOM(providedData = data) {
 //format number to money
 //https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-strings
 function formatNumberMoney(number) {
-    return  (number).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
- }
+  return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+}
 
- //Double money
- function doubleMoney() {
-     data = data.map(user => {
-         return {
-             ...user,
-             money: user.money * 2
-         }
-     });
+//Double money
+function doubleMoney() {
+  data = data.map((user) => {
+    return {
+      ...user,
+      money: user.money * 2,
+    };
+  });
 
-     updateDOM()
- }
+  updateDOM();
+}
 
- //Sort user by money
- function sortByMoney() {
-    data = data.sort((a, b) => b.money - a.money)
-    updateDOM()
- }
+//Sort user by money
+function sortByMoney() {
+  data.sort((a, b) => b.money - a.money);
+  updateDOM();
+}
 
- //Event Listeners
- addUserBtn.addEventListener('click', getRandomUser);
- doubleBtn.addEventListener('click', doubleMoney);
- sortBtn.addEventListener('click', sortByMoney);
- 
- 
+//Show millionaires
+function millionaires() {
+  data = data.filter((user) => user.money >= 1000000);
+
+  updateDOM();
+}
+
+//Event Listeners
+addUserBtn.addEventListener("click", getRandomUser);
+doubleBtn.addEventListener("click", doubleMoney);
+sortBtn.addEventListener("click", sortByMoney);
+showMillionairesBtn.addEventListener("click", millionaires);
