@@ -89,7 +89,7 @@ function calculateWealth() {
     totalAmount
   )}</strong></h3>`;
   main.appendChild(totalAmountEl)
-  console.log(totalAmount);
+//   console.log(totalAmount);
 }
 
 //Event Listeners
